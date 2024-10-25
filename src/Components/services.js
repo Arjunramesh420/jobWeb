@@ -8,7 +8,7 @@ import {
   Construction,
   Checkroom
 } from '@mui/icons-material';
-
+import './component.css';
 // Import images
 import housekeepingImage from '../Assets/housekeeper.jpg'; // Adjust as necessary
 import securityImage from '../Assets/security.jpg'; // Replace with actual image path
@@ -75,15 +75,8 @@ const Services = () => {
       <div style={{ backgroundColor: '#A50000', color: 'white', padding: '20px 0' }}>
         {sections.map((section, index) => (
           <div 
+          className={`service ${index % 2 === 0 ? 'even' : 'odd'}`}
             key={section.id} 
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              padding: '40px 20px',
-              justifyContent: index % 2 === 0 ? 'flex-start' : 'flex-end',
-              flexDirection: index % 2 === 0 ? 'row' : 'row-reverse',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.2)'
-            }}
           >
             <img 
               src={section.image} 
@@ -94,12 +87,12 @@ const Services = () => {
                 margin: index % 2 === 0 ? '0 20px 0 0' : '0 0 0 20px'
               }} 
             />
-            <div style={{ width: '60%' }}>
+            <div sx={{ width: '100%' }}>
               <h2 style={{ margin: '0 0 10px', display: 'flex', alignItems: 'center', color: '#b8860b' }}> {/* Updated color */}
                 {section.icon} 
                 <span style={{ marginLeft: '8px' }}>{section.title}</span>
               </h2>
-              <p style={{ margin: 0, fontSize: '1.5em' }}>{section.description}</p>
+              <p style={{ margin: 0, fontSize: '1.2em' ,textAlign:'justify'}}>{section.description}</p>
             </div>
           </div>
         ))}

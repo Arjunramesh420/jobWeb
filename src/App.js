@@ -41,7 +41,7 @@ const styles = {
   },
   contactLine: {
     position: 'relative',
-    height: '40px',
+    height: '55px',
     background: '#A50000',
     display: 'flex',
     alignItems: 'center',
@@ -52,7 +52,7 @@ const styles = {
     color: '#fff',
     fontSize: '16px',
     textAlign: 'right',
-    padding: '10px',
+    padding: '20px',
     position: 'relative',
     zIndex: 1,
   },

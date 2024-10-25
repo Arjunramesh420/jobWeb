@@ -100,8 +100,9 @@ const jobOpenings = [
           backgroundImage: `url(${heroImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          height: { xs: '300px', md: '600px' },
+          height: { xs: '300px', md: '450px' },
           display: 'flex',
+        
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
@@ -112,8 +113,9 @@ const jobOpenings = [
       >
         <Box
           sx={{
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            padding: '20px',
+            backgroundColor: 'rgba(0, 0, 0, 0.4)',
+
+            padding: '50px',
             borderRadius: '8px',
           }}
         >
@@ -140,29 +142,29 @@ const jobOpenings = [
         </Box>
       </Box>
 
-      <Container maxWidth="xl" sx={{ bgcolor: '#A50000', color: '#fff', padding: '0' }}>
-        <Box sx={{ display: 'flex', marginY: '0', padding: '0 20px' }}>
-          <Box sx={{ flex: 1, textAlign: 'left' }}>
-            <Typography variant="h4" gutterBottom sx={{ color: 'gold', paddingTop: '10px' }}>
+      <Container maxWidth={false} sx={{ bgcolor: '#A50000', color: '#fff' }}>
+        <Box sx={{ display: 'flex',flexDirection:{xs:'column',md:'row'},justifyContent:'space-between'}}>
+          <Box sx={{ flex: 1}}>
+            <Typography variant="h4" gutterBottom sx={{ color: 'gold',paddingTop:"30px"}}>
               Who We Are
             </Typography>
-            <Typography>
+            <Typography sx={{textAlign:'justify'}}>
               At Job Boom, we take pride in being a premier manpower solutions provider based in India, a country renowned for its rich pool of talent and diverse workforce. With the highest manpower after China, India stands at the forefront of global human resource solutions. Our mission is to bridge the gap between exceptional talent and thriving businesses, both within India and around the globe.
             </Typography>
             <br />
-            <Typography>
+            <Typography sx={{textAlign:'justify'}}>
               In a rapidly changing job market, we understand that finding the right talent can be a daunting task. That’s where we come in. Our dedicated team of experts leverages years of industry experience and deep market insights to connect organizations with skilled professionals across various sectors. Whether you’re a startup looking for your first hire or a multinational corporation seeking specialized talent, we tailor our solutions to meet your unique needs.
             </Typography>
-            <br />
-            <Typography>
+            
+            <Typography sx={{textAlign:'justify'}}>
               We offer a comprehensive suite of services designed to empower both job seekers and employers. From talent acquisition and temporary staffing to recruitment process outsourcing and consulting services, our holistic approach ensures that we deliver the best outcomes for all parties involved. Our commitment to quality and efficiency sets us apart, making us a trusted partner in the journey of talent acquisition.
             </Typography>
             <br />
-            <Typography>
+            <Typography sx={{textAlign:'justify'}}>
               At Job Boom, we believe that every individual deserves the opportunity to realize their full potential. Our mission goes beyond simply filling vacancies; we aim to foster meaningful connections that drive growth and innovation. By understanding the aspirations of job seekers and the requirements of employers, we create a synergy that benefits both sides.
             </Typography>
-            <br />
-            <Typography>
+            
+            <Typography sx={{textAlign:'justify'}}>
               As we expand our reach beyond Indian borders, we remain dedicated to maintaining our high standards of service and integrity. Our global perspective allows us to cater to the evolving needs of businesses worldwide, ensuring that you have access to the best talent, no matter where you are located.
             </Typography>
             <Button
@@ -180,39 +182,44 @@ const jobOpenings = [
               Learn More
             </Button>
           </Box>
-          <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <img src={whoImage} alt="Who We Are" style={{ maxWidth: '100%', height: 'auto', paddingLeft: '50px' }} />
+          <Box sx={{flex:1,marginLeft:{xs:'0px',md:'22px'},marginTop:{xs:'15px',md:'90px'}}}>
+            <img src={whoImage} alt="Who We Are" style={{width:'100%'}}/>
           </Box>
         </Box>
-        <Box sx={{ marginY: '40px', padding: '0 20px' }}>
-  <Typography variant="h4" gutterBottom sx={{ color: 'gold' }}>Our Services</Typography>
+        <Box >
+  <Typography variant="h4" gutterBottom sx={{ color: 'gold' ,paddingTop:"50px"}}>Our Services</Typography>
   <Grid container spacing={3}>
     {services.map((service, index) => (
-      <Grid item xs={12} sm={6} md={3} key={index}>
+      <Grid item xs={12} sm={6} md={4} key={index}>
         <Link to={`/services/${service.name}`} style={{ textDecoration: 'none', color: 'inherit' }}>
           <Card sx={{ bgcolor: '#333', color: '#fff', height: '100%', cursor: 'pointer' }}>
-            <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%', textAlign: 'center' }}>
-              <div>
+            <CardContent sx={{ display: 'flex', flexDirection: 'column'}}>
+           
                 <Typography variant="h5" sx={{ color: 'gold', marginBottom: 1 }}>{service.name}</Typography>
                 <Divider sx={{ backgroundColor: '#b8860b', marginY: 1 }} />
-              </div>
-              <Typography variant="body2" sx={{ color: '#fff', flexGrow: 1 }}>
+             
+              <Typography variant="body2" sx={{ color: '#fff', flexGrow: 1,textAlign:'justify' }}>
                 {service.description}
               </Typography>
-            </CardContent>
-            <CardActions>
+             
               <Button
+              
                 size="small"
                 sx={{
                   color: '#b8860b',
+                  marginTop:'10px',
+                  marginRight:'auto',
                   '&:hover': {
                     color: '#fff',
+
                   },
                 }}
               >
                 Learn More
               </Button>
-            </CardActions>
+            
+            </CardContent>
+           
           </Card>
         </Link>
       </Grid>
@@ -221,9 +228,9 @@ const jobOpenings = [
 </Box>
 
 
-<Box sx={{ marginY: '40px', padding: '0 20px' }}>
-  <Typography variant="h4" gutterBottom sx={{ color: 'gold' }}>Current Job Openings</Typography>
-  <br />
+<Box >
+  <Typography variant="h4" gutterBottom sx={{ color: 'gold',paddingTop:"50px" }}>Current Job Openings</Typography>
+
   <Typography>Explore the latest opportunities and take your career to the next level.</Typography>
   <br />
   <Grid container spacing={2}>
@@ -239,7 +246,7 @@ const jobOpenings = [
           justifyContent: 'space-between' 
         }}>
           <Typography variant="h6" sx={{ color: 'gold' }}>{job.title}</Typography>
-          <Divider sx={{ backgroundColor: 'gold', marginY: '10px' }} />
+          <Divider sx={{ backgroundColor: 'gold' }} />
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <LocationOnIcon sx={{ color: 'silver', marginRight: '5px' }} />
             <Typography variant="subtitle1" sx={{ color: 'silver' }}>{job.location}</Typography>
@@ -266,8 +273,8 @@ const jobOpenings = [
     View All Jobs
   </Button>
 </Box>
-<Box sx={{ marginY: '40px', padding: '0 20px' }}>
-  <Typography variant="h4" gutterBottom sx={{ color: 'gold' }}>What Our Clients Say</Typography>
+<Box>
+  <Typography variant="h4" gutterBottom sx={{ color: 'gold',paddingTop:'50px' }}>What Our Clients Say</Typography>
   <Box sx={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px', textAlign: 'center' }}>
     <Typography variant="body1" sx={{ fontStyle: 'italic', color: 'black' }}>
       {testimonials[currentTestimonialIndex]}
@@ -321,11 +328,11 @@ const jobOpenings = [
                   },
                 },
               }}
-              sx={{ backgroundColor: 'rgba(255, 255, 255, 0.3)', width: '500px' }}
+              sx={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' ,width:{xs:'200px',md:'400px'}}}
             />
           </Grid>
           <Grid item xs={12}>
-            <FormControl component="fieldset" sx={{ width: '500px' }}>
+            <FormControl component="fieldset" >
               <RadioGroup row>
                 <FormControlLabel value="male" control={<Radio />} label="Male" />
                 <FormControlLabel value="female" control={<Radio />} label="Female" />
@@ -352,7 +359,7 @@ const jobOpenings = [
                   },
                 },
               }}
-              sx={{ backgroundColor: 'rgba(255, 255, 255, 0.3)', width: '500px' }}
+              sx={{ backgroundColor: 'rgba(255, 255, 255, 0.3)',width:{xs:'200px',md:'400px'}}}
             />
           </Grid>
           <Grid item xs={12}>
@@ -374,7 +381,7 @@ const jobOpenings = [
                   },
                 },
               }}
-              sx={{ backgroundColor: 'rgba(255, 255, 255, 0.3)', width: '500px' }}
+              sx={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' ,width:{xs:'200px',md:'400px'}}}
             />
           </Grid>
           <Grid item xs={12}>
@@ -396,7 +403,7 @@ const jobOpenings = [
                   },
                 },
               }}
-              sx={{ backgroundColor: 'rgba(255, 255, 255, 0.3)', width: '500px' }}
+              sx={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' ,width:{xs:'200px',md:'400px'}}}
             />
           </Grid>
           <Grid item xs={12}>
@@ -410,7 +417,7 @@ const jobOpenings = [
                   bgcolor: '#A50000',
                   color: '#fff',
                 },
-                width: '500px',
+                width:{xs:'200px',md:'400px'}
               }}
             >
               Submit
@@ -419,7 +426,7 @@ const jobOpenings = [
         </Grid>
       </form>
       <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleCloseSnackbar}>
-        <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
+        <Alert onClose={handleCloseSnackbar} severity="success" >
           Your message has been sent!
         </Alert>
       </Snackbar>
