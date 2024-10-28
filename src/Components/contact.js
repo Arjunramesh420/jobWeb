@@ -10,7 +10,7 @@ import { styled } from '@mui/system';
 import contactbg from '../Assets/contactbg.jpg'; 
 
 const HeroSection = styled('div')({
-  height: '100vh',
+  height: 'auto',
   backgroundImage: `url(${contactbg})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
@@ -24,7 +24,7 @@ const StyledPaper = styled(Paper)({
   backgroundColor: 'transparent', // Fully transparent background
   color: '#B8860B', // Text color
   textAlign: 'center',
-  maxWidth: '600px',
+  
   width: '90%',
   backdropFilter: 'blur(5px)', // Optional: adds a blur effect to the background
 });
@@ -48,7 +48,7 @@ const ContactForm = () => {
   return (
     <HeroSection>
       <StyledPaper>
-      <Typography variant="h4" gutterBottom fontWeight="bold">
+      <Typography  variant="h4" gutterBottom fontWeight="bold">
   Partner with Us for Excellence
 </Typography>
 
