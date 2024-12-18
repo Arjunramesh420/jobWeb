@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useRef,useState} from 'react';
 import {
   AppBar,
   Toolbar,
@@ -19,6 +19,7 @@ import {
   RadioGroup, FormLabel , FormControl
 } from '@mui/material';
 import { Alert } from '@mui/material';
+import emailjs from 'emailjs-com';
 import { Facebook, Twitter, LinkedIn  } from '@mui/icons-material'; 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import heroImage from '../Assets/heroHome.jpg'; // Adjust the path as necessary
@@ -29,9 +30,11 @@ import { Link } from 'react-router-dom'; // or import from the appropriate libra
 
 
 const JobBoomHomepage = () => {
-  const [snackbarOpen, setSnackbarOpen] = React.useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = React.useState(0);
-
+  const formRef = useRef();
   const testimonials = [
     '"Job Boom transformed our hiring process! The candidates they provided were not only qualified but also a perfect fit for our culture. Thank you!" - Priya Sharma',
     '"I can\'t express how grateful we are for Job Boom\'s services. The team is highly responsive and really understands our needs!" - Rahul Verma',
@@ -68,9 +71,20 @@ const jobOpenings = [
     return () => clearInterval(interval);
   }, [testimonials.length]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setSnackbarOpen(true);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_ctvg90g', 'template_xni0o4n', formRef.current, 'q1JQjjAox62QbvlSi')
+      .then((result) => {
+        setSnackbarSeverity('success');
+        setSnackbarMessage('Your message has been sent!');
+        setSnackbarOpen(true);
+        formRef.current.reset();
+      }, (error) => {
+        setSnackbarSeverity('error');
+        setSnackbarMessage('Failed to send message. Please try again.');
+        setSnackbarOpen(true);
+      });
   };
 
   const handleCloseSnackbar = () => {
@@ -306,130 +320,143 @@ const jobOpenings = [
           borderRadius: '8px',
         }}
       />
+      
       <Typography variant="h4" gutterBottom sx={{ color: 'gold', position: 'relative' }}>Get in Touch</Typography>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
-        <Grid container spacing={2} direction="column" alignItems="center">
-          <Grid item xs={12}>
-            <TextField
-              label="Name"
-              variant="outlined"
-              fullWidth
-              InputLabelProps={{
-                sx: {
-                  fontWeight: 'bold',
-                  color: 'black',
-                },
-              }}
-              InputProps={{
-                sx: {
-                  '&:focus': {
-                    borderColor: 'black',
-                    boxShadow: '0 0 5px black',
-                  },
-                },
-              }}
-              sx={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' ,width:{xs:'200px',md:'400px'}}}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <FormControl component="fieldset" >
-              <RadioGroup row>
-                <FormControlLabel value="male" control={<Radio />} label="Male" />
-                <FormControlLabel value="female" control={<Radio />} label="Female" />
-                <FormControlLabel value="other" control={<Radio />} label="Other" />
-              </RadioGroup>
-            </FormControl>
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              label="Address"
-              variant="outlined"
-              fullWidth
-              InputLabelProps={{
-                sx: {
-                  fontWeight: 'bold',
-                  color: 'black',
-                },
-              }}
-              InputProps={{
-                sx: {
-                  '&:focus': {
-                    borderColor: 'black',
-                    boxShadow: '0 0 5px black',
-                  },
-                },
-              }}
-              sx={{ backgroundColor: 'rgba(255, 255, 255, 0.3)',width:{xs:'200px',md:'400px'}}}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              label="Company Name"
-              variant="outlined"
-              fullWidth
-              InputLabelProps={{
-                sx: {
-                  fontWeight: 'bold',
-                  color: 'black',
-                },
-              }}
-              InputProps={{
-                sx: {
-                  '&:focus': {
-                    borderColor: 'black',
-                    boxShadow: '0 0 5px black',
-                  },
-                },
-              }}
-              sx={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' ,width:{xs:'200px',md:'400px'}}}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              label="GST Number"
-              variant="outlined"
-              fullWidth
-              InputLabelProps={{
-                sx: {
-                  fontWeight: 'bold',
-                  color: 'black',
-                },
-              }}
-              InputProps={{
-                sx: {
-                  '&:focus': {
-                    borderColor: 'black',
-                    boxShadow: '0 0 5px black',
-                  },
-                },
-              }}
-              sx={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' ,width:{xs:'200px',md:'400px'}}}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Button
-              type="submit"
-              variant="contained"
-              sx={{
-                bgcolor: '#b8860b',
-                color: '#000',
-                '&:hover': {
-                  bgcolor: '#A50000',
-                  color: '#fff',
-                },
-                width:{xs:'200px',md:'400px'}
-              }}
-            >
-              Submit
-            </Button>
-          </Grid>
-        </Grid>
-      </form>
       <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleCloseSnackbar}>
-        <Alert onClose={handleCloseSnackbar} severity="success" >
-          Your message has been sent!
+        <Alert onClose={handleCloseSnackbar} severity={snackbarSeverity}>
+          {snackbarMessage}
         </Alert>
       </Snackbar>
+      <form ref={formRef} onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+      <Grid container spacing={2} direction="column" alignItems="center">
+        <Grid item xs={12}>
+          <TextField
+            label="Name"
+            variant="outlined"
+            fullWidth
+            required
+            name="name"  // Add name attribute for form data
+            InputLabelProps={{
+              sx: { fontWeight: 'bold', color: 'black' }
+            }}
+            InputProps={{
+              sx: { '&:focus': { borderColor: 'black', boxShadow: '0 0 5px black' } }
+            }}
+            sx={{ backgroundColor: 'rgba(255, 255, 255, 0.3)', width: { xs: '200px', md: '400px' } }}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            label="Email"
+            variant="outlined"
+            fullWidth
+            required
+            name="email"  // Added name attribute for form data
+            InputLabelProps={{
+              sx: { fontWeight: 'bold', color: 'black' }
+            }}
+            InputProps={{
+              sx: { '&:focus': { borderColor: 'black', boxShadow: '0 0 5px black' } }
+            }}
+            sx={{ backgroundColor: 'rgba(255, 255, 255, 0.3)', width: { xs: '200px', md: '400px' } }}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            label="Phone Number"
+            variant="outlined"
+            fullWidth
+            required
+            name="phone"  // Added name attribute for form data
+            InputLabelProps={{
+              sx: { fontWeight: 'bold', color: 'black' }
+            }}
+            InputProps={{
+              sx: { '&:focus': { borderColor: 'black', boxShadow: '0 0 5px black' } }
+            }}
+            sx={{ backgroundColor: 'rgba(255, 255, 255, 0.3)', width: { xs: '200px', md: '400px' } }}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <FormControl component="fieldset"  required>
+            <RadioGroup row name="gender"> {/* Added name to associate with form data */}
+              <FormControlLabel value="male" control={<Radio />} label="Male" />
+              <FormControlLabel value="female" control={<Radio />} label="Female" />
+              <FormControlLabel value="other" control={<Radio />} label="Other" />
+            </RadioGroup>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            label="Address"
+            variant="outlined"
+            fullWidth
+            required
+            name="address"  // Added name attribute for form data
+            InputLabelProps={{
+              sx: { fontWeight: 'bold', color: 'black' }
+            }}
+            InputProps={{
+              sx: { '&:focus': { borderColor: 'black', boxShadow: '0 0 5px black' } }
+            }}
+            sx={{ backgroundColor: 'rgba(255, 255, 255, 0.3)', width: { xs: '200px', md: '400px' } }}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            label="Company Name"
+            variant="outlined"
+            fullWidth
+            required
+            name="companyName"  // Added name attribute for form data
+            InputLabelProps={{
+              sx: { fontWeight: 'bold', color: 'black' }
+            }}
+            InputProps={{
+              sx: { '&:focus': { borderColor: 'black', boxShadow: '0 0 5px black' } }
+            }}
+            sx={{ backgroundColor: 'rgba(255, 255, 255, 0.3)', width: { xs: '200px', md: '400px' } }}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            label="GST Number"
+            variant="outlined"
+            fullWidth
+            required
+            name="gstNumber"  // Added name attribute for form data
+            InputLabelProps={{
+              sx: { fontWeight: 'bold', color: 'black' }
+            }}
+            InputProps={{
+              sx: { '&:focus': { borderColor: 'black', boxShadow: '0 0 5px black' } }
+            }}
+            sx={{ backgroundColor: 'rgba(255, 255, 255, 0.3)', width: { xs: '200px', md: '400px' } }}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Button
+            type="submit"
+            variant="contained"
+            sx={{
+              bgcolor: '#b8860b',
+              color: '#000',
+              '&:hover': {
+                bgcolor: '#A50000',
+                color: '#fff',
+              },
+              width: { xs: '200px', md: '400px' }
+            }}
+          >
+            Submit
+          </Button>
+        </Grid>
+      </Grid>
+
+     
+    </form>
+
+      
     </Box>
 
 
