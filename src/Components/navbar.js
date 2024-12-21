@@ -42,17 +42,17 @@ const Header = () => {
   );
 
   return (
-    <AppBar position="static" style={{ backgroundColor: '#b8860b' }}>
+    <AppBar position="static" style={{ backgroundColor: 'black' }}>
       <Toolbar>
         <Box
           style={{
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          
             padding: '10px',
             borderRadius: '5px',
             marginRight: 'auto',
           }}
         >
-          <img src={logo} alt="Job Boom Logo" style={{ height: '30px' }} />
+          <img src={logo} alt="Job Boom Logo" style={{ height: '40px' }} />
         </Box>
         {isMediumUp ? ( // Show buttons only on medium or larger screens
           <Box style={{  display: 'flex',  marginLeft:'auto' }}>
@@ -60,7 +60,7 @@ const Header = () => {
               <Link to={item.path} style={{ textDecoration: 'none' }} key={item.text}>
                 <Button
                   style={{ color: 'white' }}
-                  onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#A50000')}
+                  onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#ff00e6')}
                   onMouseOut={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
                 >
                   {item.text}
@@ -83,7 +83,7 @@ const Header = () => {
         <a href="https://play.google.com/store/search?q=job%20boom&c=apps&hl=en" target="_blank" rel="noopener noreferrer">
           <Button
             style={{ color: 'white' }}
-            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#A50000')}
+            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#ff00e6')}
             onMouseOut={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
           >
             Employee Login
@@ -92,7 +92,7 @@ const Header = () => {
         <a href="https://play.google.com/store/apps/details?id=com.trustappgateway.jobboomemployer&hl=en" target="_blank" rel="noopener noreferrer">
           <Button
             style={{ color: 'white' }}
-            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#A50000')}
+            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#ff00e6')}
             onMouseOut={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
           >
             Employer Login

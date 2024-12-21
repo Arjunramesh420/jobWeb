@@ -140,26 +140,27 @@ const jobOpenings = [
             Find the perfect fit in a booming job market.
           </Typography>
           <Button
-            variant="contained"
-            sx={{
-              bgcolor: '#b8860b',
-              color: '#000',
-              marginTop: '20px',
-              '&:hover': {
-                bgcolor: '#A50000',
-                color: '#fff', // Change text color to white on hover
-              },
-            }}
-          >
-            Get Started
-          </Button>
+  variant="contained"
+  sx={{
+    bgcolor: '#b8860b',
+    color: '#000',
+    marginTop: '20px',
+    '&:hover': {
+      bgcolor: '#ff00e6',
+      color: '#fff', // Change text color to white on hover
+    },
+  }}
+  onClick={() => window.open('https://play.google.com/store/search?q=job%20boom&c=apps&hl=en', '_blank')}
+>
+  Get Started
+</Button>
         </Box>
       </Box>
 
-      <Container maxWidth={false} sx={{ bgcolor: '#A50000', color: '#fff' }}>
+      <Container maxWidth={false} sx={{ bgcolor: 'black', color: '#fff' }}>
         <Box sx={{ display: 'flex',flexDirection:{xs:'column',md:'row'},justifyContent:'space-between'}}>
           <Box sx={{ flex: 1}}>
-            <Typography variant="h4" gutterBottom sx={{ color: 'gold',paddingTop:"30px"}}>
+            <Typography variant="h4" gutterBottom sx={{ color: '#ff00e6',paddingTop:"30px"}}>
               Who We Are
             </Typography>
             <Typography sx={{textAlign:'justify'}}>
@@ -181,6 +182,8 @@ const jobOpenings = [
             <Typography sx={{textAlign:'justify'}}>
               As we expand our reach beyond Indian borders, we remain dedicated to maintaining our high standards of service and integrity. Our global perspective allows us to cater to the evolving needs of businesses worldwide, ensuring that you have access to the best talent, no matter where you are located.
             </Typography>
+            <Link to="/about" style={{ textDecoration: 'none' }}>
+
             <Button
               variant="contained"
               sx={{
@@ -188,20 +191,21 @@ const jobOpenings = [
                 color: '#000',
                 marginTop: '20px',
                 '&:hover': {
-                  bgcolor: '#A50000',
+                  bgcolor: '#ff00e6',
                   color: '#fff', // Change text color to white on hover
                 },
               }}
             >
               Learn More
             </Button>
+            </Link>
           </Box>
           <Box sx={{flex:1,marginLeft:{xs:'0px',md:'22px'},marginTop:{xs:'15px',md:'90px'}}}>
             <img src={whoImage} alt="Who We Are" style={{width:'100%'}}/>
           </Box>
         </Box>
         <Box >
-  <Typography variant="h4" gutterBottom sx={{ color: 'gold' ,paddingTop:"50px"}}>Our Services</Typography>
+  <Typography variant="h4" gutterBottom sx={{ color: '#ff00e6' ,paddingTop:"50px"}}>Our Services</Typography>
   <Grid container spacing={3}>
     {services.map((service, index) => (
       <Grid item xs={12} sm={6} md={4} key={index}>
@@ -217,20 +221,20 @@ const jobOpenings = [
               </Typography>
              
               <Button
-              
-                size="small"
-                sx={{
-                  color: '#b8860b',
-                  marginTop:'10px',
-                  marginRight:'auto',
-                  '&:hover': {
-                    color: '#fff',
-
-                  },
-                }}
-              >
-                Learn More
-              </Button>
+  size="small"
+  component={Link}
+  to="/services" // This is the relative path for your services page
+  sx={{
+    color: '#b8860b',
+    marginTop: '10px',
+    marginRight: 'auto',
+    '&:hover': {
+      color: '#ff00e6',
+    },
+  }}
+>
+  Learn More
+</Button>
             
             </CardContent>
            
@@ -243,7 +247,7 @@ const jobOpenings = [
 
 
 <Box >
-  <Typography variant="h4" gutterBottom sx={{ color: 'gold',paddingTop:"50px" }}>Current Job Openings</Typography>
+  <Typography variant="h4" gutterBottom sx={{ color: '#ff00e6',paddingTop:"50px" }}>Current Job Openings</Typography>
 
   <Typography>Explore the latest opportunities and take your career to the next level.</Typography>
   <br />
@@ -262,7 +266,7 @@ const jobOpenings = [
           <Typography variant="h6" sx={{ color: 'gold' }}>{job.title}</Typography>
           <Divider sx={{ backgroundColor: 'gold' }} />
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <LocationOnIcon sx={{ color: 'silver', marginRight: '5px' }} />
+            <LocationOnIcon sx={{ color: '#ff00e6', marginRight: '5px' }} />
             <Typography variant="subtitle1" sx={{ color: 'silver' }}>{job.location}</Typography>
           </Box>
           <Typography variant="body2" sx={{ marginTop: '10px', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
@@ -272,23 +276,25 @@ const jobOpenings = [
       </Grid>
     ))}
   </Grid>
-  <Button
-    variant="contained"
-    sx={{
-      bgcolor: '#b8860b',
-      color: '#000',
-      marginTop: '20px',
-      '&:hover': {
-        bgcolor: '#A50000',
-        color: '#fff',
-      },
-    }}
-  >
-    View All Jobs
-  </Button>
+  <Link to="/contact" style={{ textDecoration: 'none' }}>
+      <Button
+        variant="contained"
+        sx={{
+          bgcolor: '#b8860b',
+          color: '#000',
+          marginTop: '20px',
+          '&:hover': {
+            bgcolor: '#ff00e6',
+            color: '#fff',
+          },
+        }}
+      >
+        Apply for Job
+      </Button>
+    </Link>
 </Box>
 <Box>
-  <Typography variant="h4" gutterBottom sx={{ color: 'gold',paddingTop:'50px' }}>What Our Clients Say</Typography>
+  <Typography variant="h4" gutterBottom sx={{ color: '#ff00e6',paddingTop:'50px' }}>What Our Clients Say</Typography>
   <Box sx={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px', textAlign: 'center' }}>
     <Typography variant="body1" sx={{ fontStyle: 'italic', color: 'black' }}>
       {testimonials[currentTestimonialIndex]}
@@ -321,7 +327,7 @@ const jobOpenings = [
         }}
       />
       
-      <Typography variant="h4" gutterBottom sx={{ color: 'gold', position: 'relative' }}>Get in Touch</Typography>
+      <Typography variant="h4" gutterBottom sx={{ color: '#ff00e6', position: 'relative', fontWeight:'bold' }}>Get in Touch Employers !!</Typography>
       <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleCloseSnackbar}>
         <Alert onClose={handleCloseSnackbar} severity={snackbarSeverity}>
           {snackbarMessage}
@@ -442,7 +448,7 @@ const jobOpenings = [
               bgcolor: '#b8860b',
               color: '#000',
               '&:hover': {
-                bgcolor: '#A50000',
+                bgcolor: '#ff00e6',
                 color: '#fff',
               },
               width: { xs: '200px', md: '400px' }

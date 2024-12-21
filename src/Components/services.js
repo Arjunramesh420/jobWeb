@@ -72,7 +72,7 @@ const sections = [
 
 const Services = () => {
     return (
-      <div style={{ backgroundColor: '#A50000', color: 'white', padding: '20px 0' }}>
+      <div style={{ backgroundColor: 'black', color: 'white', padding: '20px 0' }}>
         {sections.map((section, index) => (
           <div 
           className={`service ${index % 2 === 0 ? 'even' : 'odd'}`}
@@ -88,7 +88,7 @@ const Services = () => {
               }} 
             />
             <div sx={{ width: '100%' }}>
-              <h2 style={{ margin: '0 0 10px', display: 'flex', alignItems: 'center', color: '#b8860b' }}> {/* Updated color */}
+              <h2 style={{ margin: '0 0 10px', display: 'flex', alignItems: 'center', color: '#ff00e6' }}> {/* Updated color */}
                 {section.icon} 
                 <span style={{ marginLeft: '8px' }}>{section.title}</span>
               </h2>

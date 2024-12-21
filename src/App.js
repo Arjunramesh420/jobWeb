@@ -14,7 +14,7 @@ const App = () => {
       <div style={styles.container}>
         <div style={styles.contactLine}>
           <div style={styles.contactText}>
-            Contact Us: : +91 8903000370 | hrlaboursjob@gmail.com
+            Contact Us: +91 8903000370 | hrlaboursjob@gmail.com
           </div>
         </div>
         <Navbar />
@@ -42,14 +42,14 @@ const styles = {
   contactLine: {
     position: 'relative',
     height: '55px',
-    background: '#A50000',
+    background: '#B8860B',
     display: 'flex',
     alignItems: 'center',
     overflow: 'hidden',
   },
   contactText: {
     flex: 1,
-    color: '#fff',
+    color: 'black',
     fontSize: '16px',
     textAlign: 'right',
     padding: '20px',

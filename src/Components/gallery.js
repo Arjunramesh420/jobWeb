@@ -34,20 +34,18 @@ import twentynine from '../Assets/twentynine.jpg';
 import thirty from '../Assets/thirty.jpg';
 
 const images = [
-  one, two, three, four, five, six,  eight, nine, 
+  one, two, three, four, five, six, eight, nine,
   eleven, twelve, thirteen, fourteen, fifteen, sixteen,
   eighteen, nineteen, twenty,
   twentyone, twentytwo, twentythree, twentyfour, twentyfive,
-  twentysix, twentyseven, twentyeight, twentynine, thirty
+  twentysix, twentyseven, twentyeight, twentynine, thirty,
 ];
 
 const Gallery = () => {
-
-
   return (
     <Box
       sx={{
-        backgroundColor: '#A50000', // Set background color
+        backgroundColor: 'black', // Unified blended background color
         minHeight: '100vh', // Ensure full height
         display: 'flex',
         flexDirection: 'column',
@@ -57,20 +55,23 @@ const Gallery = () => {
         textAlign: 'center',
       }}
     >
-<Typography
-  variant="h2"
-  component="h1"
-  gutterBottom
-  color="white"
-  style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic' }}
->
-  “Hard work beats talent when talent doesn’t work hard.” – Tim Notke
-</Typography>
+      <Typography
+        variant="h2"
+        component="h1"
+        gutterBottom
+        color="white"
+        style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic' }}
+      >
+        “Hard work beats talent when talent doesn’t work hard.” – Tim Notke
+      </Typography>
 
-    
       <Box
         display="grid"
-        gridTemplateColumns={{ xs: 'repeat(1, 1fr)', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }}
+        gridTemplateColumns={{
+          xs: 'repeat(1, 1fr)',
+          sm: 'repeat(2, 1fr)',
+          md: 'repeat(3, 1fr)',
+        }}
         gap={2}
         width="100%"
       >
@@ -83,12 +84,12 @@ const Gallery = () => {
               '&:hover': {
                 transform: 'scale(1.05)',
                 boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
-              }
+              },
             }}
           >
-            <img 
-              src={image} 
-              alt={`Image ${index + 1}`} 
+            <img
+              src={image}
+              alt={`Image ${index + 1}`}
               style={{ width: '100%', height: 'auto', borderRadius: 8 }}
             />
           </Box>
