@@ -18,6 +18,7 @@ const Header = () => {
     { text: 'Home', path: '/home' },
     { text: 'About', path: '/about' },
     { text: 'Services', path: '/services' },
+    { text: 'Blog', path: '/blog' },
     { text: 'Gallery', path: '/gallery' },
     { text: 'Contact', path: '/contact' },
   ];
@@ -27,7 +28,7 @@ const Header = () => {
       role="presentation"
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
-      style={{height:'100%',backgroundColor:'#A50000'}}
+      style={{height:'100%',backgroundColor:'#ff00e6'}}
     >
       <List>
         {navItems.map((item) => (
