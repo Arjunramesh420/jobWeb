@@ -10,7 +10,7 @@ const About = () => {
   return (
     <div>
       {/* Hero Section */}
-      <div style={{ backgroundColor: '#6d1172', padding: '80px 20px', textAlign: 'center' }}>
+      <div style={{ backgroundColor: 'black', padding: '80px 20px', textAlign: 'center' }}>
         <h1 style={{ fontSize: '3rem', fontWeight: 'bold', color: 'white', marginBottom: '20px' }}>
           About Us
         </h1>
@@ -53,7 +53,7 @@ const About = () => {
           {/* Mission Card */}
           <div 
             style={{ 
-              backgroundColor: '#6d1172', 
+              backgroundColor: '#ff00e6', 
               padding: '20px', 
               flex: 1, 
               textAlign: 'center', 
@@ -66,9 +66,9 @@ const About = () => {
             onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'} // Scale on hover
             onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} // Reset scale
           >
-            <h3 style={{ color: 'white', margin: '10px 0' }}>Our Mission</h3>
-            <AssignmentIcon style={{ fontSize: '2rem', color: 'white', margin: '0 auto' }} />
-            <p style={{ color: 'white' }}>
+            <h3 style={{ color: 'black', margin: '10px 0' }}>Our Mission</h3>
+            <AssignmentIcon style={{ fontSize: '2rem', color: 'black', margin: '0 auto' }} />
+            <p style={{ color: 'black' }}>
               At JOB BOOM, we believe that the right job can transform lives. We strive to create a platform where individuals can discover opportunities that align with their skills, interests, and values, while helping companies find the perfect fit for their teams.
             </p>
           </div>
